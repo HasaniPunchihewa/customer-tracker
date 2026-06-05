@@ -1,5 +1,6 @@
 package com.hasanipunchihewa.customer_tracker.service;
 
+import com.hasanipunchihewa.customer_tracker.exception.NotFoundException;
 import com.hasanipunchihewa.customer_tracker.model.Customer;
 import com.hasanipunchihewa.customer_tracker.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class CustomerService {
 
     public Customer getCustomerById(UUID id) {
         return customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new NotFoundException("Customer not found"));
     }
 
     public Customer createCustomer(Customer customer) {

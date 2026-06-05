@@ -1,5 +1,6 @@
 package com.hasanipunchihewa.customer_tracker.service;
 
+import com.hasanipunchihewa.customer_tracker.exception.NotFoundException;
 import com.hasanipunchihewa.customer_tracker.model.Order;
 import com.hasanipunchihewa.customer_tracker.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class OrderService {
 
     public Order getOrderById(UUID id) {
         return orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+                .orElseThrow(() -> new NotFoundException("Order not found"));
     }
 
     public Order createOrder(Order order) {

@@ -1,5 +1,6 @@
 package com.hasanipunchihewa.customer_tracker.service;
 
+import com.hasanipunchihewa.customer_tracker.exception.NotFoundException;
 import com.hasanipunchihewa.customer_tracker.model.Product;
 import com.hasanipunchihewa.customer_tracker.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class ProductService {
 
     public Product getProductById(UUID id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
+                .orElseThrow(() -> new NotFoundException("Product not found"));
     }
 
     public Product createProduct(Product product) {
